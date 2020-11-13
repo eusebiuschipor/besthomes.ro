@@ -1,0 +1,14 @@
+.logo {
+    margin-top: 40px;
+    color: coral;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+}
+  
+.subtitle {
+    font-style: italic;
+    font-size: x-large;
+    color: coral;
+}

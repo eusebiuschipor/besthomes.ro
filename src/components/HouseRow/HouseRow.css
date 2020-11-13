@@ -1,0 +1,20 @@
+.price {
+    font-size: larger;
+    color: coral;
+}
+
+.featuredHouseMainImage {
+    max-width: 100%;
+}
+
+.house {
+    margin-bottom: 10px;
+}
+
+.link-property:hover {
+    text-decoration: none
+}
+
+.title, .description {
+    color: black;
+}
