@@ -1,18 +1,19 @@
 import React from 'react';
-import HouseRow from '../HouseRow/HouseRow.js';
 import './FeaturedHouse.css';
+import HouseRow from '../HouseRow/HouseRow.js';
 
 function FeaturedHouse(props) {
     if (props.house) {
         return (
-            <div>
-                <div className="row featuredHouse">
-                    <h3 className="col-md-12 text-center">
-                        Casă recomandată
-                    </h3>
-                </div>
-                <HouseRow house={props.house} />
-            </div>
+            <React.Fragment>
+                <section>
+                    <div className="container">
+                        <div className="row featured-houses-row">
+                            <HouseRow house={props.house} />
+                        </div>
+                    </div>
+                </section>
+            </React.Fragment>
         );
     }
 

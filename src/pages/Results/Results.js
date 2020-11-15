@@ -13,13 +13,15 @@ function Results(props) {
     }
 
     return (
-        <div className="mt-2">
-            <table className="table table-hover">
-                <tbody>
+        <React.Fragment>
+            <section>
+                <div className="container">
+                    <div className="row featured-houses-row">
                     {houseRows}
-                </tbody>
-            </table>
-        </div>
+                    </div>
+                </div>
+            </section>
+        </React.Fragment>
     );
 }
 

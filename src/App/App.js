@@ -73,15 +73,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <React.Fragment>
         <Router>
-          <Header subtitle="Cele mai bune proprietăţi imobiliare din Romania" />
-          <HouseFilter cities={this.state.cities} 
-            filterHouses={this.filterHouses}
-            setCityFilter={this.setCityFilter} />
+          <Header />
           <Switch>
             <Route exact path="/">
-              <Homepage house={this.state.featuredHouse} />
+              <Homepage cities={this.state.cities} 
+                filterHouses={this.filterHouses}
+                setCityFilter={this.setCityFilter}
+                house={this.state.featuredHouse} />
             </Route>
             <Route path="/rezultate">
               <Results city={this.state.city} 
@@ -92,7 +92,7 @@ class App extends React.Component {
             </Route>
           </Switch>
         </Router>
-      </div>
+      </React.Fragment>
     );
   }
 }
