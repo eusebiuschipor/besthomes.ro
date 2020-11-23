@@ -1,6 +1,5 @@
 import React from "react";
 import Header from '../components/Header/Header.js';
-import HouseFilter from '../components/HouseFilter/HouseFilter.js';
 import Homepage from '../pages/Homepage/Homepage.js';
 import Results from '../pages/Results/Results.js';
 import HouseView from '../pages/HouseView/HouseView.js';
@@ -15,14 +14,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      featuredHouse: {
-        id: null,
-        address: null,
-        country: null,
-        description: null,
-        price: null,
-        photo: null
-      },
+      featuredHouses: [],
       cities: [],
       filteredHouses: null,
       city: null, 
@@ -39,23 +31,42 @@ class App extends React.Component {
     .then(response => response.json())
     .then(houses => {
       this.houses = houses;
-      this.determineFeaturedHouse();
+      this.determineFeaturedHouses();
       this.determineUniqueCities();
       this.setState({ houses });
     });
   }
 
-  determineFeaturedHouse = () => {
+  determineFeaturedHouses = () => {
+    const usedIndexes = [];
+    const numberOfFeaturedHouses = 9;
+    const featuredHouses = [];
+    let okIndex = false;
+    let randomIndex = null;
+
     if (this.houses) {
-      const randomIndex = Math.floor(Math.random() * this.houses.length);
-      const featuredHouse = this.houses[randomIndex];
-      this.setState({ featuredHouse });
+      for (let i = 0; i < numberOfFeaturedHouses; i++) {
+        do {
+          okIndex = true;
+          randomIndex = Math.floor(Math.random() * this.houses.length);
+          for (let j = 0; j < usedIndexes.length; j++) {
+            if (usedIndexes[j] === randomIndex) {
+              okIndex = false;
+            }
+          }
+        } while (!okIndex);
+
+        usedIndexes.push(randomIndex);
+        featuredHouses.push(this.houses[randomIndex]);
+      }
+
+      this.setState({ featuredHouses });
     }
   }
 
   determineUniqueCities = () => {
     const cities = this.houses 
-      ? Array.from(new Set(this.houses.map(h => h.city)))
+      ? Array.from(new Set(this.houses.map(h => h.city))).sort()
       : [];
     this.setState({ cities });
     const city = cities[0];
@@ -81,7 +92,7 @@ class App extends React.Component {
               <Homepage cities={this.state.cities} 
                 filterHouses={this.filterHouses}
                 setCityFilter={this.setCityFilter}
-                house={this.state.featuredHouse} />
+                houses={this.state.featuredHouses} />
             </Route>
             <Route path="/rezultate">
               <Results city={this.state.city} 

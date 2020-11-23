@@ -3,21 +3,25 @@ import './FeaturedHouse.css';
 import HouseRow from '../HouseRow/HouseRow.js';
 
 function FeaturedHouse(props) {
-    if (props.house) {
-        return (
-            <React.Fragment>
-                <section>
-                    <div className="container">
-                        <div className="row featured-houses-row">
-                            <HouseRow house={props.house} />
-                        </div>
-                    </div>
-                </section>
-            </React.Fragment>
-        );
+    let houseRows = null;
+
+    if (props.houses) {
+        houseRows = props.houses.map(house =>
+            <HouseRow key={house.id.toString()}
+                house={house} />);
     }
 
-    return (<div>Nu există case recomandate momentan.</div>)
+    return (
+        <React.Fragment>
+            <section>
+                <div className="container">
+                    <div className="row featured-houses-row">
+                        {houseRows}
+                    </div>
+                </div>
+            </section>
+        </React.Fragment>
+    );
 }
 
 export default FeaturedHouse;

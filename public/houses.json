@@ -118,5 +118,45 @@
         "price": "53.400 EUR",
         "photo": "houses/15.jpg",
         "title": "APARTAMENT 1 CAMERĂ TIP 1 • 35.60m²"
+    },
+    {
+        "id": 16,
+        "city": "Alba Iulia",
+        "description": "Vand apartament de 2 camere semidecomandat, situat in CENTRU,zona buna,la etajul 1, intr-un bloc constructie 1976- avand 37 mp utili. Apartamentul este compus din bucatarie,2 camere,1 hol,1 baie cu geam de aerisire,debara si balcon inchis cu termopan.Imobilul este imbunatatit cu faianta,geamuri termopan,usa metalica. Imobilul este situat in apropiere de statie de transport in comun, scoala, gradinita.",
+        "price": "40.000 EUR",
+        "photo": "houses/16.jpg",
+        "title": "De vanzare apartament 2 camere, Alba Iulia, Central, suprafata 41mp."
+    },
+    {
+        "id": 17,
+        "city": "Alba Iulia",
+        "description": "EXCLUSIVITATE! Comision 0% la cumparare! RE/MAX Vision ofera spre vanzare in zona centru Piata Iuliu Maniu, un apartament pe doua nivele, frumos compartimentat.",
+        "price": "78.600 EUR",
+        "photo": "houses/17.jpg",
+        "title": "Apartament cu 4 camere de vanzare ULTRACENTRAL Piata Iuliu Maniu"
+    },
+    {
+        "id": 18,
+        "city": "Alba Iulia",
+        "description": "Vand apartament cu 2 camere semidecomanda, mobilat, situat in Centru zona buna, la etajul 1 , intr-un bloc constructie 1976- avand 37 mp utili. Apartamentul este format din dormitor, living open space , baie cu cada si geam la exterior, hol si debara. Imobilul este imbunatatit cu centrala termica, instalatie incalzire din cupru, parchet lemn,gresie,faianta,geamuri termopan,usa metalica. Imobilul este situat in apropiere de statie de transport in comun, scoala, gradinita.",
+        "price": "45.000 EUR",
+        "photo": "houses/18.jpg",
+        "title": "De vanzare apartament 2 camere, Central, suprafata 41mp . Mobilat si utilat"
+    },
+    {
+        "id": 19,
+        "city": "Alba Iulia",
+        "description": "RE/MAX Vision va ofera spre vanzare, in exclusivitate, cu COMISION 0% la cumparare, un apartament cu trei camere situat pe str.Nicolae Titulescu, zona centru.",
+        "price": "49.900 EUR",
+        "photo": "houses/19.jpg",
+        "title": "Apartament 3 CAMERE, situat in bloc de apartamente Alba Iulia, Central"
+    },
+    {
+        "id": 20,
+        "city": "Alba Iulia",
+        "description": "RE/MAX Vision va ofera spre vanzare, in exclusivitate, cu COMISION 0% la cumparare, un apartament cu trei camere situat pe str.Nicolae Titulescu, zona centru.",
+        "price": "55.000 EUR ",
+        "photo": "houses/19.jpg",
+        "title": "EXCLUSIVITATE! Comision 0% la cumparare! RE/MAX Vision ofera spre vanzare in zona centru Piata Iuliu Maniu, un apartament frumos compartimentat cu orientare estica, in zona ultracentrala, intr-un bloc de foste proprietati."
     }
 ]

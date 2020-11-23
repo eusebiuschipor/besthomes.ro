@@ -17,7 +17,7 @@ function Results(props) {
             <section>
                 <div className="container">
                     <div className="row featured-houses-row">
-                    {houseRows}
+                        {houseRows}
                     </div>
                 </div>
             </section>

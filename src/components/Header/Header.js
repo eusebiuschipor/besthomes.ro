@@ -5,7 +5,7 @@ import '../../index.css';
 
 function Home() {
     return (
-        <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+        <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top top-navbar">
             <div className="container">
                 <Link className="navbar-brand text-brand" to="/">
                     Best<span className="color-b">Homes</span>.ro

@@ -8,7 +8,7 @@ function Homepage(props) {
             <HouseFilter cities={props.cities} 
                 filterHouses={props.filterHouses}
                 setCityFilter={props.setCityFilter} /> 
-            <FeaturedHouse house={props.house} />
+            <FeaturedHouse houses={props.houses} />
         </React.Fragment>
     );
 }
