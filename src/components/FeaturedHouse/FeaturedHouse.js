@@ -13,13 +13,11 @@ function FeaturedHouse(props) {
 
     return (
         <React.Fragment>
-            <section>
-                <div className="container">
-                    <div className="row featured-houses-row">
-                        {houseRows}
-                    </div>
+            <div className="container">
+                <div className="row featured-houses-row">
+                    {houseRows}
                 </div>
-            </section>
+            </div>
         </React.Fragment>
     );
 }

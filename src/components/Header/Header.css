@@ -16,3 +16,7 @@
 .top-navbar {
     padding: 0;
 }
+
+.text-brand:hover {
+    color: #2eca6a;
+}

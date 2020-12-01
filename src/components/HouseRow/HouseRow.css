@@ -18,3 +18,18 @@
 .title, .description {
     color: black;
 }
+
+.property a:hover {
+    text-decoration: none;
+}
+
+.property-title {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.property-title:hover {
+    color: #2eca6a;
+}

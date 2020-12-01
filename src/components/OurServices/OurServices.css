@@ -1,0 +1,16 @@
+.element {
+    padding-top: 50px;
+}
+
+.element > i {
+    color: #2eca6a;
+}
+
+.element > .title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.element > .content {
+    font-size: 20px;
+}

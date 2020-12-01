@@ -1147,18 +1147,6 @@ a:hover {
   padding-left: 0;
 }
 
-/*--------------------------------------------------------------
-# Card General
---------------------------------------------------------------*/
-@media (max-width: 767px) {
-  .card-box-a,
-  .card-box-b,
-  .card-box-c,
-  .card-box-d {
-    margin-bottom: 2.5rem;
-  }
-}
-
 @media (min-width: 768px) {
   .grid .card-box-a,
   .grid .card-box-b,
@@ -2160,7 +2148,7 @@ footer .credits {
 
 .home-house-filter {
   margin-top: 100px;
-  width: 350px;
+  max-width: 350px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -2178,12 +2166,6 @@ footer .credits {
 
 .featured-home-img {
   height: 300px;
-}
-
-
-.result-item {
-  margin-right: 50px;
-  margin-bottom: 50px
 }
 
 .result-img-box {
