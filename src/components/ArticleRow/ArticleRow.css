@@ -1,0 +1,35 @@
+.price {
+    font-size: larger;
+    color: coral;
+}
+
+.featuredArticleMainImage {
+    max-width: 100%;
+}
+
+.article {
+    margin-bottom: 10px;
+}
+
+.link-element:hover {
+    text-decoration: none
+}
+
+.title, .description {
+    color: black;
+}
+
+.element a:hover {
+    text-decoration: none;
+}
+
+.element-title {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+.element-title:hover {
+    color: #2eca6a;
+}

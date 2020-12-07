@@ -306,8 +306,9 @@ a:hover {
 }
 
 .title-a {
-  font-size: 2.6rem;
+  font-size: 2rem;
   font-weight: 600;
+  padding-bottom: 30px;
 }
 
 .title-link {
@@ -2146,6 +2147,8 @@ footer .credits {
   font-size: 14px;
 }
 
+/* New CSS: */
+
 .home-house-filter {
   margin-top: 100px;
   max-width: 350px;
@@ -2161,7 +2164,6 @@ footer .credits {
 
 .featured-houses-row {
   padding-top: 100px;
-  padding-bottom: 100px;
 }
 
 .featured-home-img {
@@ -2177,5 +2179,9 @@ footer .credits {
   margin-left: auto;
   margin-right: auto;
   display: table;
+}
+
+.home-section {
+  padding-top: 50px;
 }
 

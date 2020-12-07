@@ -1,0 +1,16 @@
+.price {
+    font-size: larger;
+    color: coral;
+}
+
+.featuredArticleMainImage {
+    max-width: 100%;
+}
+
+.article {
+    margin-bottom: 10px;
+}
+
+.title {
+    color: black;
+}

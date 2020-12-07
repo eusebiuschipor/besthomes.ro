@@ -5,7 +5,7 @@ function OurServices() {
     
     return (
         <React.Fragment>
-            <div className="container">
+            <div className="container our-services-section">
                 <div className="row">
                     <div className="col-lg-4 element text-center">
                         <i className="fas fa-house-user fa-5x" />

@@ -13,8 +13,9 @@ function FeaturedHouse(props) {
 
     return (
         <React.Fragment>
-            <div className="container">
-                <div className="row featured-houses-row">
+            <div className="container home-section">
+                <h2 class="title-a">Proprietăţi recomandate:</h2>
+                <div className="row">
                     {houseRows}
                 </div>
             </div>

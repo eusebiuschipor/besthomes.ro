@@ -14,3 +14,8 @@
 .element > .content {
     font-size: 20px;
 }
+
+.our-services-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}

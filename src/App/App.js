@@ -1,8 +1,10 @@
 import React from "react";
 import Header from '../components/Header/Header.js';
+import Footer from '../components/Footer/Footer.js';
 import Homepage from '../pages/Homepage/Homepage.js';
 import Results from '../pages/Results/Results.js';
 import HouseView from '../pages/HouseView/HouseView.js';
+import ArticleView from '../pages/ArticleView/ArticleView.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,12 +20,15 @@ class App extends React.Component {
       cities: [],
       filteredHouses: null,
       city: null, 
-      houses: null
+      houses: null,
+      articles: null,
+      latestArticles: null
     }
   }
 
   componentDidMount() {
     this.fetchHouses();
+    this.fetchArticles();
   }
 
   fetchHouses = () => {
@@ -34,6 +39,21 @@ class App extends React.Component {
       this.determineFeaturedHouses();
       this.determineUniqueCities();
       this.setState({ houses });
+    });
+  }
+
+  fetchArticles = () => {
+    fetch('/articles.json')
+    .then(response => response.json())
+    .then(articles => {
+      let latestArticles = [];
+      
+      for (let i = 0; i < 3; i++) {
+        latestArticles.push(articles[i]);
+      }
+
+      this.setState({ articles });
+      this.setState({ latestArticles });
     });
   }
 
@@ -92,16 +112,21 @@ class App extends React.Component {
               <Homepage cities={this.state.cities} 
                 filterHouses={this.filterHouses}
                 setCityFilter={this.setCityFilter}
-                houses={this.state.featuredHouses} />
+                houses={this.state.featuredHouses}
+                articles={this.state.latestArticles} />
             </Route>
             <Route path="/rezultate">
               <Results city={this.state.city} 
                 filteredHouses={this.state.filteredHouses} />
             </Route>
             <Route path="/proprietate/:id">
-              <HouseView houses={this.state.houses} />
+              <HouseView />
+            </Route>
+            <Route path="/articol/:id">
+              <ArticleView />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </React.Fragment>
     );
