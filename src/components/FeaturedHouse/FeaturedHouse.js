@@ -14,7 +14,7 @@ function FeaturedHouse(props) {
     return (
         <React.Fragment>
             <div className="container home-section">
-                <h2 class="title-a">Proprietăţi recomandate:</h2>
+                <h2 className="title-a">Proprietăţi recomandate:</h2>
                 <div className="row">
                     {houseRows}
                 </div>

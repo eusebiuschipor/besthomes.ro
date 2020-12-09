@@ -3,8 +3,14 @@ import {Link} from "react-router-dom";
 import HouseFilterBackground from '../../images/house-filter-background.jpg'
 
 function HouseFilter(props) {
+    const [city, setCity] = React.useState();
+
+    React.useEffect(() => {
+        setCity(props.cities[0]);
+    }, [props.cities]);
+
     function onSearchChange(e) {
-        props.setCityFilter(e.target.value);
+        setCity(e.target.value);
     }
 
     return (
@@ -29,7 +35,7 @@ function HouseFilter(props) {
                                                 </select>
                                             </div>
                                             <div className="home-search-button">
-                                                <Link to="/rezultate">
+                                                <Link to={`/rezultate/${city}`}>
                                                     <button type="submit" 
                                                         className="btn btn-b"
                                                         onClick={() => props.filterHouses() }>Caută</button>

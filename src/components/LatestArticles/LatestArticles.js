@@ -13,7 +13,7 @@ function LatestArticles(props) {
     return (
         <React.Fragment>
             <div className="container home-section">
-                <h2 class="title-a">Articole recente:</h2>
+                <h2 className="title-a">Articole recente:</h2>
                 <div className="row">
                     {articleRows}
                 </div>

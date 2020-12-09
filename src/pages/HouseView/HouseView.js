@@ -9,12 +9,12 @@ const HouseView = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch("/houses.json")
+    fetch(process.env.REACT_APP_SERVER_URL + 'post/houses.php')
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);
         data.forEach((house) => {
-          if (house.id === houseId) {
+          if (parseInt(house.id) === houseId) {
             setData(house);
           }
         });
@@ -55,7 +55,7 @@ const HouseView = () => {
                 id="property-single-carousel"
                 className="owl-carousel owl-arrow gallery-property">
                 <div className="carousel-item-b image-house-view">
-                  <img src={`../${data.photo}`} alt="" />
+                  <img src={`../houses/${data.photo}`} alt="" />
                 </div>
               </div>
               <div className="row justify-content-between">

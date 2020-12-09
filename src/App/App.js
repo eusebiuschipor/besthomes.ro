@@ -19,7 +19,6 @@ class App extends React.Component {
       featuredHouses: [],
       cities: [],
       filteredHouses: null,
-      city: null, 
       houses: null,
       articles: null,
       latestArticles: null
@@ -31,15 +30,17 @@ class App extends React.Component {
     this.fetchArticles();
   }
 
-  fetchHouses = () => {
-    fetch('/houses.json')
-    .then(response => response.json())
-    .then(houses => {
-      this.houses = houses;
-      this.determineFeaturedHouses();
-      this.determineUniqueCities();
-      this.setState({ houses });
-    });
+  fetchHouses = () => {        
+    fetch(process.env.REACT_APP_SERVER_URL + 'post/houses.php')
+      .then(response => response.json())
+      .then(houses => {
+        if (houses.length) {
+          this.houses = houses;
+          this.determineFeaturedHouses();
+          this.determineUniqueCities();
+          this.setState({ houses });
+        }
+      });
   }
 
   fetchArticles = () => {
@@ -59,7 +60,7 @@ class App extends React.Component {
 
   determineFeaturedHouses = () => {
     const usedIndexes = [];
-    const numberOfFeaturedHouses = 9;
+    const numberOfFeaturedHouses = 6;
     const featuredHouses = [];
     let okIndex = false;
     let randomIndex = null;
@@ -89,12 +90,6 @@ class App extends React.Component {
       ? Array.from(new Set(this.houses.map(h => h.city))).sort()
       : [];
     this.setState({ cities });
-    const city = cities[0];
-    this.setState({ city });
-  }
-
-  setCityFilter = (city) => {
-    this.setState({ city });
   }
 
   filterHouses = () => {
@@ -115,9 +110,8 @@ class App extends React.Component {
                 houses={this.state.featuredHouses}
                 articles={this.state.latestArticles} />
             </Route>
-            <Route path="/rezultate">
-              <Results city={this.state.city} 
-                filteredHouses={this.state.filteredHouses} />
+            <Route path="/rezultate/:city">
+              <Results />
             </Route>
             <Route path="/proprietate/:id">
               <HouseView />

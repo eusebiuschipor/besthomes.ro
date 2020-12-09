@@ -4,16 +4,16 @@ import '../../index.css';
 function Footer() {
     return (
         <React.Fragment>
-            <section class="section-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12">
-                            <div class="widget-a">
-                                <div class="w-header-a">
-                                    <h3 class="w-title-a text-brand">BestHomes.ro</h3>
+            <section className="section-footer">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-12 col-md-12">
+                            <div className="widget-a">
+                                <div className="w-header-a">
+                                    <h3 className="w-title-a text-brand">BestHomes.ro</h3>
                                 </div>
-                                <div class="w-body-a">
-                                    <p class="w-text-a color-text-a">
+                                <div className="w-body-a">
+                                    <p className="w-text-a color-text-a">
                                         Cele mai bune proprietăţi din România.
                                     </p>
                                 </div>
@@ -23,12 +23,12 @@ function Footer() {
                 </div>
             </section>
             <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright-footer">
-                                <p class="copyright color-text-a">
-                                    © Copyright <span class="color-a">BestHomes.ro</span> Toate drepturile rezervate.
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="copyright-footer">
+                                <p className="copyright color-text-a">
+                                    © Copyright <span className="color-a">BestHomes.ro</span> Toate drepturile rezervate.
                                 </p>
                             </div>
                         </div>
