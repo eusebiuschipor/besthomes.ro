@@ -44,7 +44,7 @@ class App extends React.Component {
   }
 
   fetchArticles = () => {
-    fetch('/articles.json')
+    fetch(process.env.REACT_APP_SERVER_URL + 'post/articles.php')
     .then(response => response.json())
     .then(articles => {
       let latestArticles = [];

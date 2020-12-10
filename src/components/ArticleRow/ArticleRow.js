@@ -10,7 +10,7 @@ function ArticleRow(props) {
                     <div className="carousel-item-b">
                         <div className="card-box-a card-shadow">
                             <div className="img-box-a result-img-box">
-                                <img src={`../${props.article.image}`} alt="" className="img-a featured-home-img" />
+                                <img src={`../articles/${props.article.image}`} alt="" className="img-a featured-home-img" />
                             </div>
                         </div>
                     </div>

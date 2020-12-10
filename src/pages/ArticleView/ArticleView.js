@@ -9,12 +9,12 @@ const ArticleView = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch("/articles.json")
+    fetch(process.env.REACT_APP_SERVER_URL + 'post/articles.php')
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);
         data.forEach((article) => {
-          if (article.id === articleId) {
+          if (parseInt(article.id) === articleId) {
             setData(article);
           }
         });
@@ -54,7 +54,7 @@ const ArticleView = () => {
                 id="property-single-carousel"
                 className="owl-carousel owl-arrow gallery-property">
                 <div className="carousel-item-b image-house-view">
-                  <img src={`../${data.image}`} alt="" />
+                  <img src={`../articles/${data.image}`} alt="" />
                 </div>
               </div>
               <div className="row justify-content-between">
