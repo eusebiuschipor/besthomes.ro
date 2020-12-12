@@ -1,0 +1,14 @@
+.title-add-image {
+    width: 100%;
+    padding-bottom: 100px;
+}
+
+.upload-image > form {
+    display: table;
+    margin: 0 auto;
+}
+
+.file-input {
+    display: table;
+    padding-bottom: 30px;
+}

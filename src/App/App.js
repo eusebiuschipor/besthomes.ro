@@ -5,11 +5,15 @@ import Homepage from '../pages/Homepage/Homepage.js';
 import Results from '../pages/Results/Results.js';
 import HouseView from '../pages/HouseView/HouseView.js';
 import ArticleView from '../pages/ArticleView/ArticleView.js';
+import AddHouse from '../pages/AddHouse/AddHouse.js';
+import UploadImages from "../pages/UploadImages/UploadImages.js";
+
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+
 
 class App extends React.Component {
 
@@ -118,6 +122,12 @@ class App extends React.Component {
             </Route>
             <Route path="/articol/:id">
               <ArticleView />
+            </Route>
+            <Route path="/add-house">
+              <AddHouse />
+            </Route>
+            <Route path="/upload-images/:id">
+              <UploadImages />
             </Route>
           </Switch>
           <Footer />

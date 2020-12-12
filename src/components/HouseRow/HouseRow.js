@@ -16,7 +16,7 @@ function HouseRow(props) {
                     <div className="carousel-item-b">
                         <div className="card-box-a card-shadow">
                             <div className="img-box-a result-img-box">
-                                <img src={`../houses/${props.house.photo}`} alt="" className="img-a featured-home-img" />
+                                <img src={`${process.env.REACT_APP_SERVER_URL}/uploads/${props.house.id}/1.png`} alt="" className="img-a featured-home-img" />
                             </div>
                             <div className="card-overlay">
                                 <div className="card-overlay-a-content">

@@ -20,3 +20,19 @@
 .text-brand:hover {
     color: #2eca6a;
 }
+
+.hide-mobile-navigation {
+    display: none;
+}
+
+.show-mobile-navigation {
+    display: block;
+}
+
+.nav-link {
+    margin-top: 10px;
+}
+
+.navbar-menu {
+    justify-content: flex-end;
+}
