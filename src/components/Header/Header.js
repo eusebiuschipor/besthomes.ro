@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
 import '../../index.css';
+import { If, Then, Else } from 'react-if';
 
 function Header() {
     const [showMobileNavigation, setShowMobileNavigation] = React.useState(false);
@@ -19,8 +20,7 @@ function Header() {
 
     React.useEffect(() => {
         document.addEventListener('mousedown', clickInPage, false);
-      }, []);
-    
+    }, []);
 
     const clickInPage = (e) => {
         if (e.srcElement.className !== 'hamburger-button' 
@@ -28,6 +28,14 @@ function Header() {
             setMobileNavigationState('hide-mobile-navigation');
             setShowMobileNavigation(false);
         }
+    }
+
+    const requireAuth = () => {
+        if (localStorage.getItem('email')) {
+          return true;
+        }
+    
+        return false;
     }
 
     return (
@@ -53,11 +61,22 @@ function Header() {
                     <div className={`navbar-collapse navbar-menu ${mobileNavigationState}`} id="navbarDefault">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <Link to="/add-house" 
-                                    className="nav-link"
-                                    onClick={()=> toggleShowMobileNavigation()}>
-                                    Adaugă anunţ
-                                </Link>
+                                <If condition={requireAuth}>
+                                    <Then>
+                                        <Link to="/add-house" 
+                                            className="nav-link"
+                                            onClick={()=> toggleShowMobileNavigation()}>
+                                            Adaugă anunţ
+                                        </Link>
+                                    </Then>
+                                    <Else>
+                                        <Link to="/login" 
+                                            className="nav-link"
+                                            onClick={()=> toggleShowMobileNavigation()}>
+                                            Login
+                                        </Link>
+                                    </Else>
+                                </If>
                             </li>
                         </ul>
                     </div>

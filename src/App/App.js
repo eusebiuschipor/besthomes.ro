@@ -7,6 +7,8 @@ import HouseView from '../pages/HouseView/HouseView.js';
 import ArticleView from '../pages/ArticleView/ArticleView.js';
 import AddHouse from '../pages/AddHouse/AddHouse.js';
 import UploadImages from "../pages/UploadImages/UploadImages.js";
+import Login from "../pages/Login/Login.js";
+import { Redirect } from 'react-router';
 
 import {
   BrowserRouter as Router,
@@ -101,6 +103,14 @@ class App extends React.Component {
     this.setState({ filteredHouses });
   }
 
+  requireAuth = () => {
+    if (localStorage.getItem('email')) {
+      return true;
+    }
+
+    return false;
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -123,11 +133,19 @@ class App extends React.Component {
             <Route path="/articol/:id">
               <ArticleView />
             </Route>
-            <Route path="/add-house">
-              <AddHouse />
+            <Route path="/add-house" render={() => (
+              this.requireAuth() ? (
+                <AddHouse />
+              ) : (
+                <Redirect to="/"/>
+              )
+            )}>
             </Route>
             <Route path="/upload-images/:id">
               <UploadImages />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
           </Switch>
           <Footer />
