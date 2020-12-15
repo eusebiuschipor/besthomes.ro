@@ -1,14 +1,24 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-const HouseView = () => {
+const HouseView = (props) => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState("");
   const [data, setData] = React.useState([]);
+  const [city, setCity] = React.useState("");
   const houseId = parseInt(useParams().id);
 
   React.useEffect(() => {
-    console.log(process.env.REACT_APP_SERVER_URL);
+    if (props.cities.length) {
+      props.cities.forEach(city => {
+        if (city.id === data.city) {
+          setCity(city.city);
+        }
+      });
+    }
+  }, [props.cities, data.city]);
+
+  React.useEffect(() => {
     setLoading(true);
     fetch(process.env.REACT_APP_SERVER_URL + 'post/houses.php')
       .then((response) => response.json())
@@ -42,7 +52,7 @@ const HouseView = () => {
             <div className="col-md-12 col-lg-8">
               <div className="title-single-box">
                 <h1 className="title-single">{data.title}</h1>
-                <span className="color-text-a">{data.city}</span>
+                <span className="color-text-a">{city}</span>
               </div>
             </div>
           </div>
@@ -84,7 +94,7 @@ const HouseView = () => {
                         </li>
                         <li className="d-flex justify-content-between">
                           <strong>Oraş:</strong>
-                          <span>{data.city}</span>
+                          <span>{city}</span>
                         </li>
                       </ul>
                     </div>

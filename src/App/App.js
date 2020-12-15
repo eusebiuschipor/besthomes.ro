@@ -23,7 +23,7 @@ class App extends React.Component {
     super();
     this.state = {
       featuredHouses: [],
-      cities: [],
+      cities: null,
       filteredHouses: null,
       houses: null,
       articles: null,
@@ -34,6 +34,24 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchHouses();
     this.fetchArticles();
+    this.fetchCities();
+  }
+
+  fetchCities = () => {
+    fetch(process.env.REACT_APP_SERVER_URL + 'post/cities.php')
+      .then(response => response.json())
+      .then(data => {
+        // if (data.length) {
+        //   console.log(data);
+        //   const cities = data;
+        // }
+        const cities = data.length 
+          ? data
+          : [];
+        //console.log(cities);
+        this.setState({ cities });
+        console.log(this.state.cities);
+      });
   }
 
   fetchHouses = () => {        
@@ -43,7 +61,6 @@ class App extends React.Component {
         if (houses.length) {
           this.houses = houses;
           this.determineFeaturedHouses();
-          this.determineUniqueCities();
           this.setState({ houses });
         }
       });
@@ -91,13 +108,6 @@ class App extends React.Component {
     }
   }
 
-  determineUniqueCities = () => {
-    const cities = this.houses 
-      ? Array.from(new Set(this.houses.map(h => h.city))).sort()
-      : [];
-    this.setState({ cities });
-  }
-
   filterHouses = () => {
     const filteredHouses = this.houses.filter((h) => h.city === this.state.city);
     this.setState({ filteredHouses });
@@ -118,7 +128,7 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route exact path="/">
-              <Homepage cities={this.state.cities} 
+              <Homepage cities={this.state.cities !== null ? this.state.cities : []} 
                 filterHouses={this.filterHouses}
                 setCityFilter={this.setCityFilter}
                 houses={this.state.featuredHouses}
@@ -128,14 +138,14 @@ class App extends React.Component {
               <Results />
             </Route>
             <Route path="/proprietate/:id">
-              <HouseView />
-            </Route>
+              <HouseView cities={this.state.cities !== null ? this.state.cities : []}  />
+            </Route> 
             <Route path="/articol/:id">
               <ArticleView />
             </Route>
             <Route path="/add-house" render={() => (
               this.requireAuth() ? (
-                <AddHouse />
+                <AddHouse cities={this.state.cities !== null ? this.state.cities : []}/>
               ) : (
                 <Redirect to="/"/>
               )

@@ -2,7 +2,7 @@ import React from "react";
 import './AddHouse.css';
 import { useHistory } from "react-router-dom";
 
-function AddHouse() {
+function AddHouse(props) {
     const [title, setTitle] = React.useState("");
     const [city, setCity] = React.useState("");
     const [description, setDescription] = React.useState("");
@@ -78,14 +78,10 @@ function AddHouse() {
                                     </div>
                                     <div class="col-md-6 mb-3">
                                     <div class="form-group">
-                                        <input name="city" 
-                                            type="text" 
-                                            class="form-control form-control-lg form-control-a" 
-                                            placeholder="Oraş" 
-                                            data-rule="minlen:4" 
-                                            data-msg="Te rugăm să introduci minim 3 caractere!"
-                                            onChange={handleCityChange} />
-                                        <div class="validate"></div>
+                                        <select className="form-control form-control-lg form-control-a"
+                                            onChange={handleCityChange}>
+                                            {props.cities.map((c) => <option key={c.id} value={c.id}>{c.city}</option>)}
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">

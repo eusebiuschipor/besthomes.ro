@@ -3,10 +3,13 @@ import {Link} from "react-router-dom";
 import HouseFilterBackground from '../../images/house-filter-background.jpg'
 
 function HouseFilter(props) {
-    const [city, setCity] = React.useState();
+    const [city, setCity] = React.useState({});
 
     React.useEffect(() => {
-        setCity(props.cities[0]);
+        console.log(props.cities);
+        if (props.cities.length) {
+            setCity(props.cities[0].id);
+        }
     }, [props.cities]);
 
     function onSearchChange(e) {
@@ -31,7 +34,7 @@ function HouseFilter(props) {
                                             <div className="home-house-filter">
                                                 <select className="form-control form-control-lg form-control-a"
                                                     onChange={onSearchChange}>
-                                                    {props.cities.map((c) => <option key={c} value={c}>{c}</option>)}
+                                                    {props.cities.map((c) => <option key={c.id} value={c.id}>{c.city}</option>)}
                                                 </select>
                                             </div>
                                             <div className="home-search-button">
