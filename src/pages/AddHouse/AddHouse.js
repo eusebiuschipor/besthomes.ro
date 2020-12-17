@@ -1,14 +1,43 @@
 import React from "react";
 import './AddHouse.css';
 import { useHistory } from "react-router-dom";
+import HouseType from '../../components/HouseType/HouseType.js';
 
 function AddHouse(props) {
     const [title, setTitle] = React.useState("");
     const [city, setCity] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [price, setPrice] = React.useState("");
+    const [houseType, setHouseType] = React.useState("");
+    const [houseTypes, setHouseTypes] = React.useState("");
     const history = useHistory();
-  
+
+    React.useEffect(() => {
+        if (props.cities.length) {
+            setCity(parseInt(props.cities[0].id));
+        }
+    }, [props.cities]);
+
+    React.useEffect(() => {
+        if (props.houseTypes.length) {
+            setHouseType(parseInt(props.houseTypes[0].id));
+        }
+    }, [props.houseTypes]);
+
+    React.useEffect(() => {
+        let houseTypes = null;
+
+        if (props.houseTypes.length) {
+            houseTypes = props.houseTypes.map(house =>
+                <HouseType key={house.id.toString()}
+                    houseType={houseType}
+                    handleHouseTypeChange={handleHouseTypeChange}
+                    house={house} />);
+
+            setHouseTypes(houseTypes);
+        }
+    }, [props.houseTypes, houseType]);
+    
     const _handleSubmit = (e) => {
         e.preventDefault();
 
@@ -22,7 +51,8 @@ function AddHouse(props) {
                 city: city,
                 description: description,
                 price: price,
-                photo: ''
+                photo: '',
+                houseType: houseType
             }),
         })
         .then(response => response.json())
@@ -41,6 +71,10 @@ function AddHouse(props) {
         setCity(city);
     }
 
+    const handleHouseTypeChange = (event) => {
+        setHouseType(parseInt(event.target.id));
+    }
+
     const handleDescriptionChange = (event) => {
         let description = event.target.value;
         setDescription(description);
@@ -52,52 +86,57 @@ function AddHouse(props) {
     }
   
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 section-t8">
-                    <div class="row">
-                        <h1 class="title-single text-center title-form">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-12 section-t8">
+                    <div className="row">
+                        <h1 className="title-single text-center title-form">
                             Pasul 1: Adaugă anunţ
                         </h1>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div className="row house-types">
+                        <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                            {houseTypes}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
                             <form onSubmit={(e)=>_handleSubmit(e)}>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <div class="form-group">
+                                <div className="row">
+                                    <div className="col-md-6 mb-3">
+                                        <div className="form-group">
                                             <input type="text" 
                                                 name="title" 
-                                                class="form-control form-control-lg form-control-a" 
+                                                className="form-control form-control-lg form-control-a" 
                                                 placeholder="Titlu" 
                                                 data-rule="minlen:4" 
                                                 data-msg="Te rugăm să introduci minim 4 caractere!"
                                                 onChange={handleTitleChange} />
-                                            <div class="validate"></div>
+                                            <div className="validate"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                    <div class="form-group">
+                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group">
                                         <select className="form-control form-control-lg form-control-a"
                                             onChange={handleCityChange}>
                                             {props.cities.map((c) => <option key={c.id} value={c.id}>{c.city}</option>)}
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
+                                <div className="col-md-12 mb-3">
+                                    <div className="form-group">
                                         <input type="text" 
                                             name="price" 
-                                            class="form-control form-control-lg form-control-a" 
+                                            className="form-control form-control-lg form-control-a" 
                                             placeholder="Preţ"
                                             onChange={handlePriceChange} />
-                                        <div class="validate"></div>
+                                        <div className="validate"></div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
+                                <div className="col-md-12">
+                                    <div className="form-group">
                                         <textarea name="description" 
-                                            class="form-control" 
+                                            className="form-control" 
                                             cols="45" 
                                             rows="8" 
                                             data-rule="required" 
@@ -105,12 +144,12 @@ function AddHouse(props) {
                                             placeholder="Descriere"
                                             onChange={handleDescriptionChange}>
                                         </textarea>
-                                        <div class="validate"></div>
+                                        <div className="validate"></div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-center">
+                                <div className="col-md-12 text-center">
                                     <button type="submit" 
-                                        class="btn btn-a"
+                                        className="btn btn-a"
                                         onClick={(e)=>_handleSubmit(e)}>Adaugă anunţul</button>
                                 </div>
                                 </div>

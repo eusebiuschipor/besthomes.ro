@@ -34,18 +34,18 @@ function UploadImages() {
   }
   
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 section-t8">
-          <div class="row">
-            <h1 class="title-single text-center title-add-image">Pasul 2: Încarcă o imagine</h1>
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-12 section-t8">
+          <div className="row">
+            <h1 className="title-single text-center title-add-image">Pasul 2: Încarcă o imagine</h1>
           </div>
-          <div class="row upload-image">
+          <div className="row upload-image">
             <form onSubmit={(e)=>_handleSubmit(e)}>
               <input className="file-input"
                 type="file" 
                 onChange={(e)=>_handleImageChange(e)} />
-              <button class="btn btn-a"
+              <button className="btn btn-a"
                 type="submit" 
                 onClick={(e)=>_handleSubmit(e)}>
                   Incarcă imagine</button>

@@ -46,45 +46,45 @@ function Login() {
     }
   
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 section-t8">
-                    <div class="row">
-                        <h1 class="title-single text-center title-form">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-12 section-t8">
+                    <div className="row">
+                        <h1 className="title-single text-center title-form">
                             Login
                         </h1>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div className="row">
+                        <div className="col-md-12">
                             <form onSubmit={(e)=>_handleSubmit(e)}>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <div class="form-group">
+                                <div className="row">
+                                    <div className="col-md-6 mb-3">
+                                        <div className="form-group">
                                             <input type="text" 
                                                 name="email" 
-                                                class="form-control form-control-lg form-control-a" 
+                                                className="form-control form-control-lg form-control-a" 
                                                 placeholder="Email" 
                                                 data-rule="minlen:4" 
                                                 data-msg="Te rugăm să introduci minim 4 caractere!"
                                                 onChange={handleEmailChange} />
-                                            <div class="validate"></div>
+                                            <div className="validate"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                    <div class="form-group">
+                                    <div className="col-md-6 mb-3">
+                                    <div className="form-group">
                                         <input name="password" 
                                             type="password"
-                                            class="form-control form-control-lg form-control-a" 
+                                            className="form-control form-control-lg form-control-a" 
                                             placeholder="Parola" 
                                             data-rule="minlen:3" 
                                             data-msg="Te rugăm să introduci minim 3 caractere!"
                                             onChange={handlePasswordChange} />
-                                        <div class="validate"></div>
+                                        <div className="validate"></div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-center">
+                                <div className="col-md-12 text-center">
                                     <button type="submit" 
-                                        class="btn btn-a"
+                                        className="btn btn-a"
                                         onClick={(e)=>_handleSubmit(e)}>Login</button>
                                 </div>
                                 </div>

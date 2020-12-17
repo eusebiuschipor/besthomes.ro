@@ -40,9 +40,9 @@ function Header() {
 
     return (
         <React.Fragment>
-            <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-                <div class="container">
-                    <button class="navbar-toggler collapsed hamburger-button" 
+            <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+                <div className="container">
+                    <button className="navbar-toggler collapsed hamburger-button" 
                         type="button" 
                         data-toggle="collapse" 
                         data-target="#navbarDefault" 
@@ -50,17 +50,17 @@ function Header() {
                         aria-expanded="false" 
                         aria-label="Toggle navigation"
                         onClick={()=> toggleShowMobileNavigation()}>
-                        <span class="hamburger-button"></span>
-                        <span class="hamburger-button"></span>
-                        <span class="hamburger-button"></span>
+                        <span className="hamburger-button"></span>
+                        <span className="hamburger-button"></span>
+                        <span className="hamburger-button"></span>
                     </button>
                     <Link className="navbar-brand text-brand" 
                         to="/">
-                        Best<span class="color-b">Homes</span>.ro
+                        Best<span className="color-b">Homes</span>.ro
                     </Link>
                     <div className={`navbar-collapse navbar-menu ${mobileNavigationState}`} id="navbarDefault">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
                                 <If condition={requireAuth}>
                                     <Then>
                                         <Link to="/add-house" 

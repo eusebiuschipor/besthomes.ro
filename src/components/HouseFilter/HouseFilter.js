@@ -6,7 +6,6 @@ function HouseFilter(props) {
     const [city, setCity] = React.useState({});
 
     React.useEffect(() => {
-        console.log(props.cities);
         if (props.cities.length) {
             setCity(props.cities[0].id);
         }

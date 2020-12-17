@@ -27,7 +27,8 @@ class App extends React.Component {
       filteredHouses: null,
       houses: null,
       articles: null,
-      latestArticles: null
+      latestArticles: null,
+      houseTypes: null
     }
   }
 
@@ -35,22 +36,17 @@ class App extends React.Component {
     this.fetchHouses();
     this.fetchArticles();
     this.fetchCities();
+    this.fetchHouseTypes();
   }
 
   fetchCities = () => {
     fetch(process.env.REACT_APP_SERVER_URL + 'post/cities.php')
       .then(response => response.json())
       .then(data => {
-        // if (data.length) {
-        //   console.log(data);
-        //   const cities = data;
-        // }
         const cities = data.length 
           ? data
           : [];
-        //console.log(cities);
         this.setState({ cities });
-        console.log(this.state.cities);
       });
   }
 
@@ -63,6 +59,17 @@ class App extends React.Component {
           this.determineFeaturedHouses();
           this.setState({ houses });
         }
+      });
+  }
+
+  fetchHouseTypes = () => {
+    fetch(process.env.REACT_APP_SERVER_URL + 'post/house_types.php')
+      .then(response => response.json())
+      .then(data => {
+        const houseTypes = data.length 
+          ? data
+          : [];
+        this.setState({ houseTypes });
       });
   }
 
@@ -145,7 +152,8 @@ class App extends React.Component {
             </Route>
             <Route path="/add-house" render={() => (
               this.requireAuth() ? (
-                <AddHouse cities={this.state.cities !== null ? this.state.cities : []}/>
+                <AddHouse cities={this.state.cities !== null ? this.state.cities : []}
+                  houseTypes={this.state.houseTypes !== null ? this.state.houseTypes : []} />
               ) : (
                 <Redirect to="/"/>
               )

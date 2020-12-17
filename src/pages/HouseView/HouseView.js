@@ -96,6 +96,10 @@ const HouseView = (props) => {
                           <strong>Oraş:</strong>
                           <span>{city}</span>
                         </li>
+                        <li className="d-flex justify-content-between">
+                          <strong>Tip:</strong>
+                          <span>{data.house_type ? (data.house_type.charAt(0).toUpperCase() + data.house_type.slice(1)) : ''}</span>
+                        </li>
                       </ul>
                     </div>
                   </div>
