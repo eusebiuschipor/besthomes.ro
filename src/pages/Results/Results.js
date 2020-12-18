@@ -7,6 +7,7 @@ function Results() {
     const [error, setError] = React.useState("");
     const [data, setData] = React.useState([]);
     const city = useParams().city;
+    const houseType = useParams().type;
 
     React.useEffect(() => {
         setLoading(true);
@@ -16,7 +17,8 @@ function Results() {
             const houses = [];
             setLoading(false);
             data.forEach((house) => {
-                if (house.city === city) {
+                if (house.city === city &&
+                    house.house_type === houseType) {
                     houses.push(house);
                 }
             });

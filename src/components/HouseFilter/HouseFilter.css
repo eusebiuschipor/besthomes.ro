@@ -1,0 +1,22 @@
+.home-house-filter {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    background-color: rgba(255,255,255,.6);
+    padding-bottom: 15px;
+}
+
+.element-search,
+.element-button {
+    padding-top: 15px;
+}
+
+.element-search > .form-control-lg {
+    height: 59px;
+}
+
+.element-button > .home-search-button > a > button {
+    width: 100%;
+    border-radius: .3rem;
+}

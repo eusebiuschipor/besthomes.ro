@@ -136,12 +136,13 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/">
               <Homepage cities={this.state.cities !== null ? this.state.cities : []} 
+                houseTypes={this.state.houseTypes !== null ? this.state.houseTypes : []} 
                 filterHouses={this.filterHouses}
                 setCityFilter={this.setCityFilter}
                 houses={this.state.featuredHouses}
                 articles={this.state.latestArticles} />
             </Route>
-            <Route path="/rezultate/:city">
+            <Route path="/rezultate/:city/:type">
               <Results />
             </Route>
             <Route path="/proprietate/:id">

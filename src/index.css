@@ -2149,19 +2149,6 @@ footer .credits {
 
 /* New CSS: */
 
-.home-house-filter {
-  margin-top: 100px;
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.home-search-button {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-}
-
 .featured-houses-row {
   padding-top: 100px;
 }
