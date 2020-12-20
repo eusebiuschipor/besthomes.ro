@@ -28,7 +28,8 @@ class App extends React.Component {
       houses: null,
       articles: null,
       latestArticles: null,
-      houseTypes: null
+      houseTypes: null,
+      adTypes: null
     }
   }
 
@@ -37,6 +38,7 @@ class App extends React.Component {
     this.fetchArticles();
     this.fetchCities();
     this.fetchHouseTypes();
+    this.fetchAdTypes();
   }
 
   fetchCities = () => {
@@ -70,6 +72,17 @@ class App extends React.Component {
           ? data
           : [];
         this.setState({ houseTypes });
+      });
+  }
+
+  fetchAdTypes = () => {
+    fetch(process.env.REACT_APP_SERVER_URL + 'post/ad_types.php')
+      .then(response => response.json())
+      .then(data => {
+        const adTypes = data.length 
+          ? data
+          : [];
+        this.setState({ adTypes });
       });
   }
 
@@ -137,12 +150,13 @@ class App extends React.Component {
             <Route exact path="/">
               <Homepage cities={this.state.cities !== null ? this.state.cities : []} 
                 houseTypes={this.state.houseTypes !== null ? this.state.houseTypes : []} 
+                adTypes={this.state.adTypes !== null ? this.state.adTypes : []} 
                 filterHouses={this.filterHouses}
                 setCityFilter={this.setCityFilter}
                 houses={this.state.featuredHouses}
                 articles={this.state.latestArticles} />
             </Route>
-            <Route path="/rezultate/:city/:type">
+            <Route path="/rezultate/:city/:type/:adType">
               <Results />
             </Route>
             <Route path="/proprietate/:id">
@@ -154,7 +168,8 @@ class App extends React.Component {
             <Route path="/add-house" render={() => (
               this.requireAuth() ? (
                 <AddHouse cities={this.state.cities !== null ? this.state.cities : []}
-                  houseTypes={this.state.houseTypes !== null ? this.state.houseTypes : []} />
+                  houseTypes={this.state.houseTypes !== null ? this.state.houseTypes : []}
+                  adTypes={this.state.adTypes !== null ? this.state.adTypes : []} />
               ) : (
                 <Redirect to="/"/>
               )

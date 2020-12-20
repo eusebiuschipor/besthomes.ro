@@ -6,6 +6,7 @@ import './HouseFilter.css';
 function HouseFilter(props) {
     const [city, setCity] = React.useState({});
     const [houseType, setHouseType] = React.useState({});
+    const [adType, setAdType] = React.useState({});
 
     React.useEffect(() => {
         if (props.cities.length) {
@@ -15,7 +16,11 @@ function HouseFilter(props) {
         if (props.houseTypes.length) {
             setHouseType(props.houseTypes[0].name);
         }
-    }, [props.cities, props.houseTypes]);
+
+        if (props.adTypes.length) {
+            setAdType(props.adTypes[0].id);
+        }
+    }, [props.cities, props.houseTypes, props.adTypes]);
 
     function onCityChange(e) {
         setCity(e.target.value);
@@ -23,6 +28,10 @@ function HouseFilter(props) {
 
     function onHouseTypeChange(e) {
         setHouseType(e.target.value);
+    }
+
+    function onAdTypeChange(e) {
+        setAdType(e.target.value);
     }
 
     return (
@@ -41,22 +50,29 @@ function HouseFilter(props) {
                                             </h1>
                                             <p className="intro-title-top text-center">Aici sunt publicate cele mai bune proprietăţi din România</p>
                                             <div className="home-house-filter row">
-                                                <div className="element-search col-lg-4 col-md-12 col-sm-12">
+                                                <div className="element-search col-lg-3 col-md-12 col-sm-12">
                                                     <select className="form-control form-control-lg form-control-a"
                                                         onChange={onCityChange}>
                                                         {props.cities.map((c) => <option key={c.id} value={c.id}>{c.city}</option>)}
                                                     </select>
                                                 </div>
-                                                <div className="element-search col-lg-4 col-md-12 col-sm-12">
+                                                <div className="element-search col-lg-3 col-md-12 col-sm-12">
                                                     <select className="form-control form-control-lg form-control-a"
                                                         onChange={onHouseTypeChange}>
                                                         {props.houseTypes.map((c) => 
                                                             <option key={c.id} value={c.name}>{c.name.charAt(0).toUpperCase() + c.name.slice(1)}</option>)}
                                                     </select>
                                                 </div>
-                                                <div className="element-button col-lg-4 col-md-12 col-sm-12">
+                                                <div className="element-search col-lg-3 col-md-12 col-sm-12">
+                                                    <select className="form-control form-control-lg form-control-a"
+                                                        onChange={onAdTypeChange}>
+                                                        {props.adTypes.map((c) => 
+                                                            <option key={c.id} value={c.id}>{c.name.charAt(0).toUpperCase() + c.name.slice(1)}</option>)}
+                                                    </select>
+                                                </div>
+                                                <div className="element-button col-lg-3 col-md-12 col-sm-12">
                                                     <div className="home-search-button">
-                                                        <Link to={`/rezultate/${city}/${houseType}`}>
+                                                        <Link to={`/rezultate/${city}/${houseType}/${adType}`}>
                                                             <button type="submit" 
                                                                 className="btn btn-b"
                                                                 onClick={() => props.filterHouses() }>Caută</button>

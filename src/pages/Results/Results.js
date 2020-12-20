@@ -8,8 +8,10 @@ function Results() {
     const [data, setData] = React.useState([]);
     const city = useParams().city;
     const houseType = useParams().type;
+    const adType = useParams().adType;
 
     React.useEffect(() => {
+        console.log(adType);
         setLoading(true);
         fetch(process.env.REACT_APP_SERVER_URL + 'post/houses.php')
         .then((response) => response.json())
@@ -18,7 +20,8 @@ function Results() {
             setLoading(false);
             data.forEach((house) => {
                 if (house.city === city &&
-                    house.house_type === houseType) {
+                    house.house_type === houseType &&
+                    house.ad_type_id === adType) {
                     houses.push(house);
                 }
             });

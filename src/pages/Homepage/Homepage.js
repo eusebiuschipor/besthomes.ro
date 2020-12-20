@@ -9,6 +9,7 @@ function Homepage(props) {
         <React.Fragment>
             <HouseFilter cities={props.cities} 
                 houseTypes={props.houseTypes}
+                adTypes={props.adTypes}
                 filterHouses={props.filterHouses}
                 setCityFilter={props.setCityFilter} /> 
             <OurServices />

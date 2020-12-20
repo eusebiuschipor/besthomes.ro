@@ -2,6 +2,7 @@ import React from "react";
 import './AddHouse.css';
 import { useHistory } from "react-router-dom";
 import HouseType from '../../components/HouseType/HouseType.js';
+import AdType from '../../components/AdType/AdType.js';
 
 function AddHouse(props) {
     const [title, setTitle] = React.useState("");
@@ -10,19 +11,23 @@ function AddHouse(props) {
     const [price, setPrice] = React.useState("");
     const [houseType, setHouseType] = React.useState("");
     const [houseTypes, setHouseTypes] = React.useState("");
+    const [adType, setAdType] = React.useState("");
+    const [adTypes, setAdTypes] = React.useState("");
     const history = useHistory();
 
     React.useEffect(() => {
         if (props.cities.length) {
             setCity(parseInt(props.cities[0].id));
         }
-    }, [props.cities]);
 
-    React.useEffect(() => {
         if (props.houseTypes.length) {
             setHouseType(parseInt(props.houseTypes[0].id));
         }
-    }, [props.houseTypes]);
+
+        if (props.adTypes.length) {
+            setAdType(parseInt(props.adTypes[0].id));
+        }
+    }, [props.cities, props.houseTypes, props.adTypes]);
 
     React.useEffect(() => {
         let houseTypes = null;
@@ -36,7 +41,21 @@ function AddHouse(props) {
 
             setHouseTypes(houseTypes);
         }
-    }, [props.houseTypes, houseType]);
+    }, [houseType, props.houseTypes]);
+
+    React.useEffect(() => {
+        let adTypes = null;
+
+        if (props.adTypes.length) {
+            adTypes = props.adTypes.map(currentAd =>
+                <AdType key={currentAd.id.toString()}
+                    adType={adType}
+                    handleAdTypeChange={handleAdTypeChange}
+                    currentAd={currentAd} />);
+
+            setAdTypes(adTypes);
+        }
+    }, [adType, props.adTypes]);
     
     const _handleSubmit = (e) => {
         e.preventDefault();
@@ -52,7 +71,8 @@ function AddHouse(props) {
                 description: description,
                 price: price,
                 photo: '',
-                houseType: houseType
+                houseType: houseType,
+                adType: adType
             }),
         })
         .then(response => response.json())
@@ -69,6 +89,10 @@ function AddHouse(props) {
     const handleCityChange = (event) => {
         let city = event.target.value;
         setCity(city);
+    }
+
+    const handleAdTypeChange = (event) => {
+        setAdType(parseInt(event.target.id));
     }
 
     const handleHouseTypeChange = (event) => {
@@ -94,9 +118,14 @@ function AddHouse(props) {
                             Pasul 1: Adaugă anunţ
                         </h1>
                     </div>
-                    <div className="row house-types">
+                    <div className="row input-group">
                         <div className="btn-group btn-group-toggle" data-toggle="buttons">
                             {houseTypes}
+                        </div>
+                    </div>
+                    <div className="row input-group">
+                        <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                            {adTypes}
                         </div>
                     </div>
                     <div className="row">
@@ -116,42 +145,42 @@ function AddHouse(props) {
                                         </div>
                                     </div>
                                     <div className="col-md-6 mb-3">
-                                    <div className="form-group">
-                                        <select className="form-control form-control-lg form-control-a"
-                                            onChange={handleCityChange}>
-                                            {props.cities.map((c) => <option key={c.id} value={c.id}>{c.city}</option>)}
-                                        </select>
+                                        <div className="form-group">
+                                            <select className="form-control form-control-lg form-control-a"
+                                                onChange={handleCityChange}>
+                                                {props.cities.map((c) => <option key={c.id} value={c.id}>{c.city}</option>)}
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-md-12 mb-3">
-                                    <div className="form-group">
-                                        <input type="text" 
-                                            name="price" 
-                                            className="form-control form-control-lg form-control-a" 
-                                            placeholder="Preţ"
-                                            onChange={handlePriceChange} />
-                                        <div className="validate"></div>
+                                    <div className="col-md-12 mb-3">
+                                        <div className="form-group">
+                                            <input type="text" 
+                                                name="price" 
+                                                className="form-control form-control-lg form-control-a" 
+                                                placeholder="Preţ"
+                                                onChange={handlePriceChange} />
+                                            <div className="validate"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-md-12">
-                                    <div className="form-group">
-                                        <textarea name="description" 
-                                            className="form-control" 
-                                            cols="45" 
-                                            rows="8" 
-                                            data-rule="required" 
-                                            data-msg="Te rugăm sa adaugi o descriere" 
-                                            placeholder="Descriere"
-                                            onChange={handleDescriptionChange}>
-                                        </textarea>
-                                        <div className="validate"></div>
+                                    <div className="col-md-12">
+                                        <div className="form-group">
+                                            <textarea name="description" 
+                                                className="form-control" 
+                                                cols="45" 
+                                                rows="8" 
+                                                data-rule="required" 
+                                                data-msg="Te rugăm sa adaugi o descriere" 
+                                                placeholder="Descriere"
+                                                onChange={handleDescriptionChange}>
+                                            </textarea>
+                                            <div className="validate"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-md-12 text-center">
-                                    <button type="submit" 
-                                        className="btn btn-a"
-                                        onClick={(e)=>_handleSubmit(e)}>Adaugă anunţul</button>
-                                </div>
+                                    <div className="col-md-12 text-center">
+                                        <button type="submit" 
+                                            className="btn btn-a"
+                                            onClick={(e)=>_handleSubmit(e)}>Adaugă anunţul</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
