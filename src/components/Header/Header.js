@@ -59,26 +59,37 @@ function Header() {
                         Best<span className="color-b">Homes</span>.ro
                     </Link>
                     <div className={`navbar-collapse navbar-menu ${mobileNavigationState}`} id="navbarDefault">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <If condition={requireAuth}>
-                                    <Then>
+                        <If condition={requireAuth}>
+                            <Then>
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link to="/anunturile-mele" 
+                                            className="nav-link"
+                                            onClick={()=> toggleShowMobileNavigation()}>
+                                            Anunţurile mele
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
                                         <Link to="/add-house" 
                                             className="nav-link"
                                             onClick={()=> toggleShowMobileNavigation()}>
                                             Adaugă anunţ
                                         </Link>
-                                    </Then>
-                                    <Else>
-                                        <Link to="/login" 
+                                    </li>
+                                </ul>
+                            </Then>
+                            <Else>
+                                <ul className="navbar-nav">
+                                    <li className="nav-item">
+                                        <Link to="/login"  
                                             className="nav-link"
                                             onClick={()=> toggleShowMobileNavigation()}>
                                             Login
                                         </Link>
-                                    </Else>
-                                </If>
-                            </li>
-                        </ul>
+                                    </li>
+                                </ul>
+                            </Else>
+                        </If>
                     </div>
                 </div>
             </nav>

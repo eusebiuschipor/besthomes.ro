@@ -100,6 +100,10 @@ const HouseView = (props) => {
                           <strong>Tip:</strong>
                           <span>{data.house_type ? (data.house_type.charAt(0).toUpperCase() + data.house_type.slice(1)) : ''}</span>
                         </li>
+                        <li className="d-flex justify-content-between">
+                          <strong>Suprafaţă utilă:</strong>
+                          <span>{data.usable_area ? (data.usable_area.charAt(0).toUpperCase() + data.usable_area.slice(1)) : ''}</span>
+                        </li>
                       </ul>
                     </div>
                   </div>

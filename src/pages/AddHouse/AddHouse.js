@@ -9,6 +9,7 @@ function AddHouse(props) {
     const [city, setCity] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [price, setPrice] = React.useState("");
+    const [usableArea, setUsableArea] = React.useState("");
     const [houseType, setHouseType] = React.useState("");
     const [houseTypes, setHouseTypes] = React.useState("");
     const [adType, setAdType] = React.useState("");
@@ -72,7 +73,9 @@ function AddHouse(props) {
                 price: price,
                 photo: '',
                 houseType: houseType,
-                adType: adType
+                adType: adType,
+                usableArea: usableArea,
+                userId: localStorage.getItem('userId')
             }),
         })
         .then(response => response.json())
@@ -107,6 +110,11 @@ function AddHouse(props) {
     const handlePriceChange = (event) => {
         let price = event.target.value;
         setPrice(price);
+    }
+
+    const handleUsableAreaChange = (event) => {
+        let usableArea = event.target.value;
+        setUsableArea(usableArea);
     }
   
     return (
@@ -152,13 +160,23 @@ function AddHouse(props) {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="col-md-12 mb-3">
+                                    <div className="col-md-6 mb-3">
                                         <div className="form-group">
                                             <input type="text" 
                                                 name="price" 
                                                 className="form-control form-control-lg form-control-a" 
                                                 placeholder="Preţ"
                                                 onChange={handlePriceChange} />
+                                            <div className="validate"></div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 mb-3">
+                                        <div className="form-group">
+                                            <input type="text" 
+                                                name="usableArea" 
+                                                className="form-control form-control-lg form-control-a" 
+                                                placeholder="Suprafaţă utilă"
+                                                onChange={handleUsableAreaChange} />
                                             <div className="validate"></div>
                                         </div>
                                     </div>

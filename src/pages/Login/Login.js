@@ -27,6 +27,7 @@ function Login() {
         .then(data => {
             if (data) {
                 localStorage.setItem('email', data.email);
+                localStorage.setItem('userId', data.id);
                 history.push("/");
                 window.location.reload(false);
             } else {

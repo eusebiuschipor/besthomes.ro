@@ -3,6 +3,7 @@ import Header from '../components/Header/Header.js';
 import Footer from '../components/Footer/Footer.js';
 import Homepage from '../pages/Homepage/Homepage.js';
 import Results from '../pages/Results/Results.js';
+import UserAds from '../pages/UserAds/UserAds.js';
 import HouseView from '../pages/HouseView/HouseView.js';
 import ArticleView from '../pages/ArticleView/ArticleView.js';
 import AddHouse from '../pages/AddHouse/AddHouse.js';
@@ -158,6 +159,9 @@ class App extends React.Component {
             </Route>
             <Route path="/rezultate/:city/:type/:adType">
               <Results />
+            </Route>
+            <Route path="/anunturile-mele">
+              <UserAds />
             </Route>
             <Route path="/proprietate/:id">
               <HouseView cities={this.state.cities !== null ? this.state.cities : []}  />
