@@ -9,6 +9,7 @@ import ArticleView from '../pages/ArticleView/ArticleView.js';
 import AddHouse from '../pages/AddHouse/AddHouse.js';
 import UploadImages from "../pages/UploadImages/UploadImages.js";
 import Login from "../pages/Login/Login.js";
+import Register from "../pages/Register/Register.js";
 import { Redirect } from 'react-router';
 
 import {
@@ -184,6 +185,9 @@ class App extends React.Component {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/inregistrare">
+              <Register />
             </Route>
           </Switch>
           <Footer />

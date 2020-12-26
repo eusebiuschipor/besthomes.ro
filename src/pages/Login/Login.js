@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import './Login.css';
 
 function Login() {
     const [password, setPassword] = React.useState("");
@@ -34,6 +35,10 @@ function Login() {
                 alert('Invalid username or password');
             }
         });
+    }
+
+    const goToRegisterPage = () => {
+        history.push("/inregistrare");
     }
 
     const handleEmailChange = (event) => {
@@ -72,22 +77,27 @@ function Login() {
                                         </div>
                                     </div>
                                     <div className="col-md-6 mb-3">
-                                    <div className="form-group">
-                                        <input name="password" 
-                                            type="password"
-                                            className="form-control form-control-lg form-control-a" 
-                                            placeholder="Parola" 
-                                            data-rule="minlen:3" 
-                                            data-msg="Te rugăm să introduci minim 3 caractere!"
-                                            onChange={handlePasswordChange} />
-                                        <div className="validate"></div>
+                                        <div className="form-group">
+                                            <input name="password" 
+                                                type="password"
+                                                className="form-control form-control-lg form-control-a" 
+                                                placeholder="Parola" 
+                                                data-rule="minlen:3" 
+                                                data-msg="Te rugăm să introduci minim 3 caractere!"
+                                                onChange={handlePasswordChange} />
+                                            <div className="validate"></div>
+                                        </div>
+                                        </div>
+                                    <div className="col-md-12 text-center">
+                                        <button type="submit" 
+                                            className="btn btn-a"
+                                            onClick={(e)=>_handleSubmit(e)}>Login</button>
                                     </div>
-                                </div>
-                                <div className="col-md-12 text-center">
-                                    <button type="submit" 
-                                        className="btn btn-a"
-                                        onClick={(e)=>_handleSubmit(e)}>Login</button>
-                                </div>
+                                    <div className="col-md-12 text-center">
+                                        <button type="submit" 
+                                            className="btn btn-a register-button"
+                                            onClick={()=>goToRegisterPage()}>Înregistrare</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

@@ -1,0 +1,7 @@
+.error-message {
+    color: red;
+}
+
+.invalid-field {
+    border-color: red !important;
+}
